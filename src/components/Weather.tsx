@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Box, Tabs, Tab, Typography } from '@mui/material'
-import { OpenFeature, useBooleanFlagDetails, useBooleanFlagValue } from '@openfeature/react-sdk'
+import { useBooleanFlagValue } from '@openfeature/react-sdk'
 
 interface Weather {
   temp: number
@@ -27,7 +27,6 @@ export default function Weather() {
   const [selectedLocation, setSelectedLocation] = useState(locationNames[0])
 
   const locationWeather = FAKE_WEATHER[selectedLocation]
-  OpenFeature.setContext('root',{ location: selectedLocation })
 
   return (
     <Box
