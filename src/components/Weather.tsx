@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { Box, Tabs, Tab, Typography } from '@mui/material'
-
-// import { useFeatureFlag } from '@moredip/openfeature-hooks'
+import { OpenFeature, useBooleanFlagDetails, useBooleanFlagValue } from '@openfeature/react-sdk'
 
 interface Weather {
   temp: number
@@ -28,6 +27,7 @@ export default function Weather() {
   const [selectedLocation, setSelectedLocation] = useState(locationNames[0])
 
   const locationWeather = FAKE_WEATHER[selectedLocation]
+  OpenFeature.setContext('root',{ location: selectedLocation })
 
   return (
     <Box
@@ -52,11 +52,10 @@ type WeatherDetailsProps = {
   weather: Weather
 }
 function WeatherDetails({ weather }: WeatherDetailsProps) {
-  // const includeConditions = useFeatureFlag<boolean>(
-  //   'include-conditions-in-weather-display',
-  //   false
-  // )
-  const includeConditions = true
+  const includeConditions = useBooleanFlagValue(
+    'include-conditions-in-weather-display',
+    false
+  )
   return (
     <Box
       sx={{

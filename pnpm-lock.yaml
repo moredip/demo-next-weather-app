@@ -23,6 +23,9 @@ dependencies:
   '@mui/material-nextjs':
     specifier: ^5.15.11
     version: 5.15.11(@emotion/cache@11.11.0)(@emotion/server@11.11.0)(@mui/material@5.15.14)(@types/react@18.2.69)(next@14.1.4)(react@18.2.0)
+  '@openfeature/react-sdk':
+    specifier: 0.2.2-experimental
+    version: 0.2.2-experimental(@openfeature/web-sdk@1.0.0)(react@18.2.0)
   next:
     specifier: 14.1.4
     version: 14.1.4(react-dom@18.2.0)(react@18.2.0)
@@ -680,6 +683,28 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.17.1
     dev: true
+
+  /@openfeature/core@1.0.0:
+    resolution: {integrity: sha512-xbtVVfZZQu0CZKql9KY8RWfM6Pm1dcoev0z15UL+MUxRnzNuAIM1gGX6FXztRousUvzq8D/y77Qs2hUppDAdcg==}
+    dev: false
+
+  /@openfeature/react-sdk@0.2.2-experimental(@openfeature/web-sdk@1.0.0)(react@18.2.0):
+    resolution: {integrity: sha512-EwDL7pkNCpLsRhopOpeAyjnUeCq1scdSEWl2m3MnEYvj13v0ANHhum1zgE7O/8MXGJTUtr2qe17oMa/4UqCyfg==}
+    peerDependencies:
+      '@openfeature/web-sdk': '>=0.4.14'
+      react: '>=16.8.0'
+    dependencies:
+      '@openfeature/web-sdk': 1.0.0(@openfeature/core@1.0.0)
+      react: 18.2.0
+    dev: false
+
+  /@openfeature/web-sdk@1.0.0(@openfeature/core@1.0.0):
+    resolution: {integrity: sha512-+5xXe0z9RqSWw/oMz2hTkjQfoMgt8aHcLTg/dR9E5zEPU/aH2c1AAvQ6yOp/PhguUidEyQzyzUtZT+uRHcWtuQ==}
+    peerDependencies:
+      '@openfeature/core': 1.0.0
+    dependencies:
+      '@openfeature/core': 1.0.0
+    dev: false
 
   /@pkgjs/parseargs@0.11.0:
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
