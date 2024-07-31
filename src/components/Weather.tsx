@@ -2,33 +2,24 @@
 
 import React, { useState } from "react";
 import { Box, Tabs, Tab, Typography } from "@mui/material";
-import { useBooleanFlagValue } from "@openfeature/react-sdk";
+import { getWeatherAt, getWeatherLocations } from "@/lib/weather";
+import { useRouter } from "next/navigation";
 
-interface Weather {
-  temp: number;
-  conditions: string;
-}
-
-const FAKE_WEATHER: Record<string, Weather> = {
-  "San Francisco": {
-    temp: 62,
-    conditions: "foggy",
-  },
-  Boston: {
-    temp: 33,
-    conditions: "clear",
-  },
-  Seattle: {
-    temp: 52,
-    conditions: "drizzle",
-  },
+export type Props = {
+  location: string;
 };
 
-export default function Weather() {
-  const locationNames = Object.keys(FAKE_WEATHER);
-  const [selectedLocation, setSelectedLocation] = useState(locationNames[0]);
+export default function Weather({ location }: Props) {
+  const router = useRouter();
+  const locationWeather = getWeatherAt(location);
 
-  const locationWeather = FAKE_WEATHER[selectedLocation];
+  if (!locationWeather) {
+    return null;
+  }
+
+  function handleLocationChange(newLocation: string) {
+    router.push(`/${newLocation}`);
+  }
 
   return (
     <Box
@@ -40,9 +31,9 @@ export default function Weather() {
       }}
     >
       <LocationTabs
-        locationNames={locationNames}
-        selected={selectedLocation}
-        onChange={setSelectedLocation}
+        locationNames={getWeatherLocations()}
+        selected={location}
+        onChange={handleLocationChange}
       />
       <WeatherDetails weather={locationWeather} />
     </Box>

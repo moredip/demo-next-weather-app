@@ -1,5 +1,8 @@
-import Weather from "../components/Weather";
+"use server";
 
-export default function Home() {
-  return <Weather />;
+import { defaultLocation } from "@/lib/weather";
+import { redirect } from "next/navigation";
+
+export default async function Home() {
+  return redirect(`/${defaultLocation()}`);
 }
