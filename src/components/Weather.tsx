@@ -2,14 +2,14 @@
 
 import React, { useState } from "react";
 import { Box, Tabs, Tab, Typography } from "@mui/material";
-import { getWeatherAt, getWeatherLocations } from "@/lib/weather";
+import { getWeatherAt, getWeatherLocations, Weather } from "@/lib/weather";
 import { useRouter } from "next/navigation";
 
 export type Props = {
   location: string;
 };
 
-export default function Weather({ location }: Props) {
+export default function WeatherComponent({ location }: Props) {
   const router = useRouter();
   const locationWeather = getWeatherAt(location);
 
