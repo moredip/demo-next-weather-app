@@ -2,6 +2,7 @@ import {
   DocumentHeadTags,
   documentGetInitialProps,
 } from "@mui/material-nextjs/v13-pagesRouter";
+
 import { Html, Head, Main, NextScript, DocumentContext } from "next/document";
 
 export default function Document(props: any) {

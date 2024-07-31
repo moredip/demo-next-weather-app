@@ -26,6 +26,9 @@ dependencies:
   '@openfeature/react-sdk':
     specifier: ^0.4.1
     version: 0.4.2(@openfeature/web-sdk@1.2.1)(react@18.2.0)
+  '@vercel/flags':
+    specifier: ^2.6.0
+    version: 2.6.0(next@14.1.4)(react-dom@18.2.0)(react@18.2.0)
   next:
     specifier: 14.1.4
     version: 14.1.4(react-dom@18.2.0)(react@18.2.0)
@@ -833,6 +836,29 @@ packages:
   /@ungap/structured-clone@1.2.0:
     resolution: {integrity: sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==}
     dev: true
+
+  /@vercel/flags@2.6.0(next@14.1.4)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-GvLX0CK/OsIqq672OBvcCeu0k3tb3QdE0lRn1P5zulMQJIPTLlUDEH0y9TeAyC7TMWlpTTT5Bealqu0rmncyXQ==}
+    peerDependencies:
+      '@sveltejs/kit': '*'
+      next: '*'
+      react: '*'
+      react-dom: '*'
+    peerDependenciesMeta:
+      '@sveltejs/kit':
+        optional: true
+      next:
+        optional: true
+      react:
+        optional: true
+      react-dom:
+        optional: true
+    dependencies:
+      jose: 5.2.1
+      next: 14.1.4(react-dom@18.2.0)(react@18.2.0)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
 
   /acorn-jsx@5.3.2(acorn@8.11.3):
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
@@ -2335,6 +2361,10 @@ packages:
     resolution: {integrity: sha512-gFqAIbuKyyso/3G2qhiO2OM6shY6EPP/R0+mkDbyspxKazh8BXDC5FiFsUjlczgdNz/vfra0da2y+aHrusLG/Q==}
     hasBin: true
     dev: true
+
+  /jose@5.2.1:
+    resolution: {integrity: sha512-qiaQhtQRw6YrOaOj0v59h3R6hUY9NvxBmmnMfKemkqYmBB0tEc97NbLP7ix44VP5p9/0YHG8Vyhzuo5YBNwviA==}
+    dev: false
 
   /js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}

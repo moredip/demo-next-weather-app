@@ -1,40 +1,42 @@
-import React, { useState } from 'react'
-import { Box, Tabs, Tab, Typography } from '@mui/material'
-import { useBooleanFlagValue } from '@openfeature/react-sdk'
+"use client";
+
+import React, { useState } from "react";
+import { Box, Tabs, Tab, Typography } from "@mui/material";
+import { useBooleanFlagValue } from "@openfeature/react-sdk";
 
 interface Weather {
-  temp: number
-  conditions: string
+  temp: number;
+  conditions: string;
 }
 
 const FAKE_WEATHER: Record<string, Weather> = {
-  'San Francisco': {
+  "San Francisco": {
     temp: 62,
-    conditions: 'foggy',
+    conditions: "foggy",
   },
   Boston: {
     temp: 33,
-    conditions: 'clear',
+    conditions: "clear",
   },
   Seattle: {
     temp: 52,
-    conditions: 'drizzle',
+    conditions: "drizzle",
   },
-}
+};
 
 export default function Weather() {
-  const locationNames = Object.keys(FAKE_WEATHER)
-  const [selectedLocation, setSelectedLocation] = useState(locationNames[0])
+  const locationNames = Object.keys(FAKE_WEATHER);
+  const [selectedLocation, setSelectedLocation] = useState(locationNames[0]);
 
-  const locationWeather = FAKE_WEATHER[selectedLocation]
+  const locationWeather = FAKE_WEATHER[selectedLocation];
 
   return (
     <Box
       sx={{
         my: 2,
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'stretch',
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "stretch",
       }}
     >
       <LocationTabs
@@ -44,24 +46,26 @@ export default function Weather() {
       />
       <WeatherDetails weather={locationWeather} />
     </Box>
-  )
+  );
 }
 
 type WeatherDetailsProps = {
-  weather: Weather
-}
+  weather: Weather;
+};
 function WeatherDetails({ weather }: WeatherDetailsProps) {
-  const includeConditions = useBooleanFlagValue(
-    'include-conditions-in-weather-display',
-    false
-  )
+  // const includeConditions = useBooleanFlagValue(
+  //   "include-conditions-in-weather-display",
+  //   false
+  // );
+  // FIXME
+  const includeConditions = true;
   return (
     <Box
       sx={{
         my: 4,
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'stretch',
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "stretch",
       }}
     >
       <Typography alignSelf="center" variant="h1" component="h3">
@@ -73,31 +77,31 @@ function WeatherDetails({ weather }: WeatherDetailsProps) {
         </Typography>
       )}
     </Box>
-  )
+  );
 }
 
 type LocationTabsProps = {
-  locationNames: string[]
-  selected: string
-  onChange: (v: string) => void
-}
+  locationNames: string[];
+  selected: string;
+  onChange: (v: string) => void;
+};
 function LocationTabs({
   locationNames,
   selected,
   onChange,
 }: LocationTabsProps) {
   function handleChange(e: React.SyntheticEvent, value: any) {
-    onChange(value)
+    onChange(value);
   }
   return (
-    <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+    <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
       <Tabs centered value={selected} onChange={handleChange}>
         {locationNames.map((locationName) => {
           return (
             <Tab label={locationName} value={locationName} key={locationName} />
-          )
+          );
         })}
       </Tabs>
     </Box>
-  )
+  );
 }
